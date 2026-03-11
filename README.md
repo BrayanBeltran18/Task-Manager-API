@@ -2,6 +2,10 @@
 
 El objetivo del proyecto es tener una API Restful real (Backend) separada del Dashboard visual (Frontend), comunicándose entre sí mediante peticiones HTTP.
 
+**🌍 Enlaces en Producción:**
+- **Frontend (UI):** [Hosteado en Netlify](https://taskmanagerapibcb.netlify.app/)
+- **Backend (API):** [Hosteado en Render](https://task-manager-api-22ln.onrender.com/tasks)
+
 ## Tecnologías Utilizadas
 
 *   **Backend (La API):** Node.js y Express.js
