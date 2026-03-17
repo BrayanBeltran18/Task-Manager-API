@@ -12,7 +12,6 @@ function readTasks() {
         const data = fs.readFileSync(dataFilePath, 'utf8');
         return JSON.parse(data);
     } catch (error) {
-        // Si el archivo no existe o está vacío, devuelve un arreglo vacío
         return [];
     }
 }
@@ -47,7 +46,7 @@ router.post('/', (req, res) => {
     const newTask = {
         id: generateNextId(tasks),
         title: title.trim(),
-        completed: false // Toda nueva tarea entra como pendiente por defecto
+        completed: false // Toda nueva tarea entra como pendiente
     };
 
     tasks.push(newTask);

@@ -17,8 +17,17 @@ taskForm.addEventListener('submit', handleAddTask);
 // GET - Cargar todas las tareas
 async function fetchTasks() {
     try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Error al obtener tareas');
+        const response = await fetch(API_URL, {
+            credentials: 'include'
+        });
+
+        // Interceptar si el token no existe, expiró o fue rechazado
+        if (response.status === 401) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        if (!response.ok) throw new Error('Error al cargar tareas');
 
         const tasks = await response.json();
         renderTasks(tasks);
@@ -34,8 +43,14 @@ async function createTask(title) {
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title })
+            body: JSON.stringify({ title }),
+            credentials: 'include'
         });
+
+        if (response.status === 401) {
+            window.location.href = 'login.html';
+            return;
+        }
 
         if (!response.ok) throw new Error('Error al crear la tarea');
         fetchTasks();
@@ -49,8 +64,14 @@ async function createTask(title) {
 async function completeTask(id) {
     try {
         const response = await fetch(`${API_URL}/${id}/complete`, {
-            method: 'PATCH'
+            method: 'PATCH',
+            credentials: 'include'
         });
+
+        if (response.status === 401) {
+            window.location.href = 'login.html';
+            return;
+        }
 
         if (!response.ok) throw new Error('Error al completar la tarea');
         fetchTasks();
@@ -64,8 +85,14 @@ async function completeTask(id) {
 async function deleteTask(id, liElement) {
     try {
         const response = await fetch(`${API_URL}/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            credentials: 'include'
         });
+
+        if (response.status === 401) {
+            window.location.href = 'login.html';
+            return;
+        }
 
         if (!response.ok) throw new Error('Error al eliminar la tarea');
 

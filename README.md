@@ -16,9 +16,14 @@ El objetivo del proyecto es tener una API Restful real (Backend) separada del Da
 ## Características Principales
 
 *   **Arquitectura Desacoplada:** El frontend y el backend viven en carpetas separadas.
+*   **Autenticación y Seguridad:** Implementación de JSON Web Tokens (JWT) para proteger la API REST. Uso de **cookies `httpOnly`** y políticas CORS para mitigar el riesgo de vulnerabilidades XSS y asegurar la sesión.
 *   **Persistencia de Datos:** Las tareas sobreviven a reinicios de la computadora gracias a `tasks.json`.
-*   **Sistema de "Logros" (Límite dinámico):** Las tareas completadas se mueven a una sección dedicada que guarda un historial máximo de tus últimas 5 tareas completadas.
+*   **Sistema de "Logros" (Límite dinámico):** Las tareas completadas se anclan en una sección dedicada hasta un máximo de 5.
 *   **Responsive Design:** La interfaz se adapta perfectamente a dispositivos móviles y monitores ultra anchos utilizando Tailwind CSS.
+
+> **Credenciales de Prueba en Producción:**
+> Para evaluar el proyecto hosteado, la pantalla principal te solicitará iniciar sesión.
+> **Usuario:** `admin` | **Contraseña:** `pedri8`
 
 ---
 
